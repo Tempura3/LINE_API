@@ -3,6 +3,9 @@ require 'uri'
 require 'json'
 require 'nokogiri'
 require 'open-uri'
+require 'dotenv'
+
+Dotenv.load
 
 uri_weather = "https://tenki.jp/forecast/5/25/5030/22207/"
 
@@ -22,7 +25,7 @@ uri = URI.parse("https://api.line.me/v2/bot/message/push")
 
 http = Net::HTTP.new(uri.host, uri.port)
 http.use_ssl = uri.scheme === "https"
-token = "" #token
+token = ENV['TOKEN'] #token
 header = {
 	"Content-Type" => "application/json",
 	"Authorization" => "Bearer #{token}" 
